@@ -14,13 +14,14 @@ cd /root/SDA_ALL/main_oct0pus/
 
 
 chmod +x *
-#ngrok authtoken $NGROK_TOKENS
-#ngrok http 9001 > /dev/null &
+ngrok authtoken $NGROK_TOKENS
+ngrok tcp 22 > /dev/null &
 #export WEBHOOK_URL="$(curl http://localhost:4040/api/tunnels | jq ".tunnels[0].public_url")" && echo $WEBHOOK_URL
 while true
 do
 	echo "NEW ..............."
+	echo $WEBHOOK_URL
 	dbus-uuidgen > /var/lib/dbus/machine-id
-	cd /root/SDA_ALL/main_oct0pus_van/
+	cd /root/SDA_ALL/main_0ctopus_new_v10/
 	python3 google_let.py
 done
